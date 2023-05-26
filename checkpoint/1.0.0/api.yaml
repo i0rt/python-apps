@@ -76,12 +76,12 @@ actions:
     description: Create new object.
     parameters:
       - name: host_list
-        description: List of hosts
+        description: List of hosts in {"name": "foo", "ip": "0.0.0.0"} format
         required: true
         multiline: false
-        example: 'INTERNET'
+        example: '[{"name": "Everybody", "ip": "0.0.0.0"}, {"name": "Example", "ip": "1.2.3.4"}]'
         schema:
-          type: array
+          type: string
       - name: ssl_verify
         description: Set ssl verification 
         example: "False"

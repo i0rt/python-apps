@@ -13,6 +13,7 @@ import eml_parser
 import mailparser
 import extract_msg
 import jsonpickle
+import ssl
 
 from glom import glom
 from msg_parser import MsOxMessage
@@ -82,6 +83,7 @@ class Email(AppBase):
             except ValueError:
                 return "SMTP port needs to be a number (Current: %s)" % smtp_port
 
+        context=ssl.create_default_context()
         try:
             s = smtplib.SMTP(host=smtp_host, port=smtp_port)
         except socket.gaierror as e:
@@ -92,9 +94,9 @@ class Email(AppBase):
         if ssl_verify == "false" or ssl_verify == "False":
             pass
         else:
-            s.starttls()
+            s.starttls(context=context)
 
-        if len(username) > 0 or len(password) > 0:
+        if (len(username) > 0 or len(password) > 0) and not password == '.':
             try:
                 s.login(username, password)
             except smtplib.SMTPAuthenticationError as e:

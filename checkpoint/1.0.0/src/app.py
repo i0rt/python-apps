@@ -145,8 +145,8 @@ class CheckPoint(AppBase):
             }
         for host in host_list:        
             json_payload = {
-                'name': host, 
-                'ip-address' : host
+                'name': host['name'],
+                'ip-address' : host['ip']
                 }
             response = requests.post(url, data=json.dumps(json_payload), headers=request_headers, verify=ssl_verify)
             if response.json().get('errors') == None and response.json().get('warnings') == None :
