@@ -29,7 +29,7 @@ authentication:
       example: "******"
       required: true
       schema:
-        type: string          
+        type: string
 actions:
   - name: list_packages
     description: Executes the install-policy on a given list of targets.
@@ -76,7 +76,7 @@ actions:
     description: Create new object.
     parameters:
       - name: host_list
-        description: List of hosts in {"name": "foo", "ip": "0.0.0.0"} format
+        description: 'List of hosts in {"name": "foo", "ip": "0.0.0.0"} format'
         required: true
         multiline: false
         example: '[{"name": "Everybody", "ip": "0.0.0.0"}, {"name": "Example", "ip": "1.2.3.4"}]'
